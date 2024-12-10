@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid black;
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+        }
+        label,input,select{
+            width: 98%;
+            margin: 8px 10px;
+            border-radius: 4px;
+            padding: 20px 0px;
+        }
+        a{  border: 1px solid black;
+            text-decoration: none;
+            background-color: #04AA6D;
+            font-size: 20px;
+            border-radius: 4px;
+            text-align: center;
+            color: white;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            display: block;&:hover{background-color: red;}
+        }
+        input,select{
+            padding-left: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <form action="">
+        
+        <input placeholder="first name.." type="text" id="first name" name="first name"><br>
+
+        <label for="last name">last name</label><br>
+        <input placeholder="last name.." type="text" id="last name" name="last name"><br>
+
+        <label for="country">country</label><br>
+        <select name="country" id="country">
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+        </select>
+        <a target="_blank" href="#">try it</a>
+    </div>
+    </form>
+</body>
+</html>

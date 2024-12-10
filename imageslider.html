@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+        }
+        .container{
+            background-color: antiquewhite;
+            width: 800px;
+            height: 500px;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),-5px -5px 10px rgba(0, 0, 0, 0.3);
+            overflow: none;
+            /* cursor:pointer; */
+        }
+        .btn{
+            background-color: #e0dcdc;
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+         margin: 0  10px;
+         transition: all .5s ease;
+         &:hover
+        {
+        background-color: #f2f2f2;
+        }
+        }
+        i{
+            transition: 1.2s ease;
+        }
+        
+        .btn-left{
+            position: absolute;
+            top: 50%;
+            cursor: pointer;
+            transform: translateY(-50%);
+            left: 0;
+        }
+        .btn-right{
+            position: absolute;
+            top: 50%;
+            cursor: pointer;
+            transform: translateY(-50%);
+            right: 0;
+        }
+
+        .slider{
+            width: 100%;
+            height: 100%;
+            background-color: aquamarine;
+            border-radius: 20px;
+         overflow: none;
+
+        }
+        .slides{
+            transition: all .5s ease;
+            width: 100%;
+            height: 100%;
+            background-image: url("../images/car1.jpg");
+            background-size: cover;
+            border-radius: 20px;
+         overflow: none;
+
+        }
+        img{
+            transition: all .5s ease;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <div onclick="prevSlide()" id="btn-l" class="btn btn-left">
+            <i class="fa-solid fa-caret-left"></i>
+        </div>
+        <div class="slider">
+
+            <img src="../images/car2.jpg" id="slide" class="slides">
+             
+        </div>
+        <div onclick="nextSlide()" id="btn-r" class="btn btn-right">
+            <i  class="fa-solid fa-caret-right"></i>
+        </div>
+
+    </div>
+
+    <script>
+        let btn_r = document.getElementById("btn-r")
+let btn_l = document.getElementById("btn-l")
+let slide = document.getElementById("slide")
+
+
+let index = 1;
+function nextSlide(){
+    if(index!=3){
+    index++;
+   slide.src=`../images/car${index}.jpg`
+    }else{
+        index=1;
+        slide.src=`../images/car${index}.jpg`
+
+    }
+}
+
+function prevSlide(){
+    if(index>1){
+        index--;
+        slide.src=`../images/car${index}.jpg`
+    }else{
+        index=3;
+        slide.src=`../images/car${index}.jpg`
+
+    }
+}
+    </script>
+</body>
+</html>

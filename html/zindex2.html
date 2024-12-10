@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+  position: relative;
+}
+
+#black-box {
+  position: relative;
+  z-index: 1;
+  border: 2px solid black;
+  height: 100px;
+  margin: 30px;
+}
+
+#blue-box {
+  position: absolute;
+  z-index: 3;
+  background: powderblue;
+  height: 60px;  
+  width: 70%;
+  left: 50px;
+  top: 50px;
+}
+
+#yellow-box {
+  position: absolute;
+  z-index: 2;
+  background: yellow;
+  width: 35%;
+  left: 270px;
+  top: -15px;
+  height: 100px;
+}
+    </style>
+</head>
+<body>
+
+    <h1>z-index example</h1>
+
+    <div id="box">
+        <div id="black-box">black box</div>
+        <div id="blue-box">red box</div>
+        <div id="yellow-box">yellow box</div>
+    </div>
+</body>
+</html>

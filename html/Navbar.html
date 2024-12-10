@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #1d1010;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        nav{
+            width: 90%;
+            background-color: #361919;
+            padding: 20px;
+
+        }
+
+        nav ul{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            list-style-type: none;
+        }
+        ul li a{
+            text-decoration: none;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 10px 20px;
+            transition: all .5s ease;
+            &:hover{
+                background-color: #1d1010;
+            }
+        }
+
+        table{
+            background-color: antiquewhite;
+            width: 93%;
+            padding: 20px 20px;
+
+        }
+
+        th{
+            transition: all .5s ease;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 10px 20px;
+            &:hover{
+                background-color: #1d1010;
+                color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </nav>
+
+    <table>
+        <tr>
+            <th>Home</th>
+            <th>About</th>
+            <th>Contact</th>
+            <th>Services</th>
+            <th>Login</th>
+        </tr>
+    </table>
+</body>
+</html>
