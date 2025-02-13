@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tic Tac Toe</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
 
         body {
@@ -20,39 +19,54 @@
             justify-content: center;
             flex-direction: column;
             gap: 20px;
+            background-color: #f0f0f0;
         }
 
         h1 {
-            font-family: cursive;
-            color: coral;
+            font-family: 'Cursive';
+            color: #ff6f61;
+            font-size: 3rem;
+        }
+
+        #status {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: bold;
         }
 
         .container {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            row-gap: 20px;
-            column-gap: 20px;
-        }
-
-        .dim {
-            opacity: 0.2;
+            grid-template-columns: repeat(3, 150px);
+            grid-template-rows: repeat(3, 150px);
+            gap: 10px;
         }
 
         .box {
             width: 150px;
             height: 150px;
+            background-color: #fff;
             border-radius: 20px;
-            box-shadow: 3px 2px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
-            font-family: cursive;
-            transition: all .5s ease;
+            font-size: 3rem;
+            font-family: 'Cursive';
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
 
-            &:hover {
-                transform: scale(1.1);
-            }
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .box.X {
+            color: #ff6f61;
+        }
+
+        .box.O {
+            color: #4a90e2;
         }
 
         .alert {
@@ -60,150 +74,136 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 30%;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            justify-content: start;
-            padding-top: 30px;
-            flex-direction: column;
-            border-radius: 20px;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            padding: 20px;
             background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
             visibility: hidden;
-
         }
 
         .alert h1 {
-
-
-            color: gray;
-            font-weight: 700;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 25px;
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
 
         .alert h3 {
-            color: gray;
-            font-weight: 500;
-            font-family: Arial, Helvetica, sans-serif;
+            color: #777;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
         }
 
         .alert button {
-            background-color: transparent;
-            font-weight: 600;
-            font-family: Arial, Helvetica, sans-serif;
-            color: gray;
+            background-color: #ff6f61;
+            color: white;
             border: none;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
             padding: 10px 20px;
-
-            &:hover {
-                background-color: rgba(239, 213, 213, 0.2);
-            }
+            font-size: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
+
+        .alert button:hover {
+            background-color: #ff3b30;
+        }
+
     </style>
 </head>
-
 <body>
+
     <h1>Tic Tac Toe</h1>
+    <p id="status">Player X's Turn</p>
+
     <div class="container">
-        <div id="0" onclick="play(this)" class="box"></div>
-        <div id="1" onclick="play(this)" class="box"></div>
-        <div id="2" onclick="play(this)" class="box"></div>
-        <div id="3" onclick="play(this)" class="box"></div>
-        <div id="4" onclick="play(this)" class="box"></div>
-        <div id="5" onclick="play(this)" class="box"></div>
-        <div id="6" onclick="play(this)" class="box"></div>
-        <div id="7" onclick="play(this)" class="box"></div>
-        <div id="8" onclick="play(this)" class="box"></div>
+        <div id="0" class="box" onclick="play(this)"></div>
+        <div id="1" class="box" onclick="play(this)"></div>
+        <div id="2" class="box" onclick="play(this)"></div>
+        <div id="3" class="box" onclick="play(this)"></div>
+        <div id="4" class="box" onclick="play(this)"></div>
+        <div id="5" class="box" onclick="play(this)"></div>
+        <div id="6" class="box" onclick="play(this)"></div>
+        <div id="7" class="box" onclick="play(this)"></div>
+        <div id="8" class="box" onclick="play(this)"></div>
     </div>
+
     <div id="alert" class="alert">
         <h1 id="title"></h1>
         <h3 id="sub-title">You won the Game</h3>
         <button onclick="restartGame()">Restart Game</button>
     </div>
+
     <script>
-
-
-        // Variable Declarations 
         let turn = "X";
-        let arr = new Array(9).fill(null)
+        let arr = new Array(9).fill(null);
         let isWin = false;
-        let div = document.getElementById("alert")
-        let btns = document.querySelectorAll(".box")
-
+        let div = document.getElementById("alert");
+        let status = document.getElementById("status");
+        let btns = document.querySelectorAll(".box");
 
         // Play Function 
         function play(e) {
             if (!isWin) {
-                if (arr[e.id] == null) {
-                    if (turn == "X") {
-                        turn = "O"
-                    } else {
-                        turn = "X"
-                    }
-                    e.innerText = turn
-                    arr[e.id] = turn
-                    checkWinner();
+                if (arr[e.id] === null) {
+                    arr[e.id] = turn;
+                    e.innerText = turn;
+                    e.classList.add(turn); // Add the class for styling X and O
 
-                } else {
+                    if (turn === "X") {
+                        turn = "O";
+                        status.innerText = "Player O's Turn";
+                    } else {
+                        turn = "X";
+                        status.innerText = "Player X's Turn";
+                    }
+
+                    checkWinner();
+                }
+            }
+        }
+
+        // Check Winner Function
+        function checkWinner() {
+            const winPatterns = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8],  // Horizontal
+                [0, 3, 6], [1, 4, 7], [2, 5, 8],  // Vertical
+                [0, 4, 8], [2, 4, 6]               // Diagonal
+            ];
+
+            for (let pattern of winPatterns) {
+                const [a, b, c] = pattern;
+                if (arr[a] !== null && arr[a] === arr[b] && arr[b] === arr[c]) {
+                    isWin = true;
+                    div.style.visibility = "visible";
+                    document.getElementById("title").innerText = `Congratulation Player ${arr[a]}`;
+                    document.getElementById("sub-title").innerText = "You won the Game!";
                     return;
                 }
-            } else {
-                return;
             }
 
-
-        }
-
-
-        // checkWinner Function 
-
-        function checkWinner() {
-            if (
-                arr[0] !== null && arr[0] == arr[1] && arr[1] == arr[2] ||
-                arr[3] !== null && arr[3] == arr[4] && arr[4] == arr[5] ||
-                arr[6] !== null && arr[6] == arr[7] && arr[7] == arr[8] ||
-                arr[0] !== null && arr[0] == arr[2] && arr[2] == arr[6] ||
-                arr[0] !== null && arr[0] == arr[3] && arr[3] == arr[6] ||
-                arr[1] !== null && arr[1] == arr[4] && arr[4] == arr[7] ||
-                arr[2] !== null && arr[2] == arr[5] && arr[5] == arr[8] ||
-                arr[0] !== null && arr[0] == arr[4] && arr[4] == arr[8] ||
-                arr[2] !== null && arr[2] == arr[4] && arr[4] == arr[6]
-            ) {
-                isWin = true
-                div.style.visibility="visible"
-                document.getElementById("title").innerText=`Congratulation Player ${turn}`
-            } else {
-                if (arr.includes(null)) {
-                    return
-                } else {
-                div.style.visibility="visible"
-                document.getElementById("title").innerText=`Game is Draw`
-                document.getElementById("sub-title").innerText=`No one win the Game `
-
-                }
+            if (!arr.includes(null)) {
+                div.style.visibility = "visible";
+                document.getElementById("title").innerText = "Game is Draw!";
+                document.getElementById("sub-title").innerText = "No one won the Game.";
             }
         }
 
-        // restartGame Function 
-        
+        // Restart Game Function
         function restartGame() {
             div.style.visibility = "hidden";
+            arr = new Array(9).fill(null);
+            isWin = false;
+            turn = "X";
+            status.innerText = "Player X's Turn";
 
-            arr = new Array(9).fill(null)
-
-            for (let i = 0; i < btns.length; i++) {
-                btns[i].innerText = ""
-
-            }
-
-            isWin=false
+            btns.forEach((btn) => {
+                btn.innerText = "";
+                btn.classList.remove("X", "O");
+            });
         }
-
     </script>
-</body>
 
+</body>
 </html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #212122;
+    height: 100vh;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 500px;
+    margin-top: 100px;
+    background-color: #f2f2f2;
+    padding: 10px 20px;
+    border-radius: 10px;
+    gap: 20px;
+    box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+header{
+    background-color: powderblue;
+    width: 80%;
+    padding: 8px 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px  rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+header input{
+    width: 80%;
+    padding: 8px 10px;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+.btn{
+    padding: 8px 10px;
+    background-color: skyblue;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+main{
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(194, 226, 255);
+    padding: 8px 10px;
+    width: 80%;
+    gap: 20px;
+}
+
+.inner-header{
+    padding: 10px 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+ul{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px   ;
+}
+
+li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    list-style-type: none;
+    padding: 8px 10px;
+    background-color: #f2f2f2;
+    width: 90%;
+    position: relative;
+    
+}
+
+i{
+    color: dodgerblue;
+}
+.fa-check{
+    
+   position: absolute;
+     right: 10px;
+    padding: 7px;
+    &:hover{
+        background-color: lightblue;
+        color: green;
+    }
+}
+
+.fa-trash{
+    
+    position: absolute;
+      right: 35px;
+     padding: 7px;
+     &:hover{
+         background-color: rgb(232, 152, 152);
+         color: red;
+     }
+ }
+
+ .task-completed{
+    text-decoration:line-through;
+ }
+    </style>
+</head>
+<body>
+     <div class="container">
+        <header>
+            <input type="text" name="task" id="task" placeholder="Enter Task">
+            <button class="btn" onclick="addTodo()" id="btn">Add</button>
+        </header>
+        <main>
+            <div class="inner-header">
+                <p>Task List</p>
+                <span><i class="fa-solid fa-filter"></i></span>
+            </div>
+            <ul id="ul" class="ul">
+            </ul>
+        </main>
+     </div>
+     <script>
+        let text = document.getElementById("task")
+let btn = document.getElementById("btn")
+let ul = document.getElementById("ul")
+
+
+let del ,mark;
+function addTodo(){
+    let li = document.createElement('li');
+    li.setAttribute("class","")
+    let textNode = document.createTextNode(text.value);
+  mark= document.createElement("i");
+    mark.classList.add("fa-solid");
+    mark.classList.add("fa-check");
+    mark.addEventListener("click",completeTodo(mark))
+
+    del = document.createElement("i");
+    del.classList.add("fa-solid");
+    del.classList.add("fa-trash");
+    del.addEventListener("click",deleteTodo(del))
+
+    li.appendChild(textNode)
+    li.appendChild(mark)
+    li.appendChild(del)
+    ul.appendChild(li);
+
+}
+
+
+// btn.addEventListener("click",addTodo);
+function deleteTodo(btns){
+    
+    btns.addEventListener("click", function (e) {
+        var parent = e.target;
+        console.log(parent);
+        ul.removeChild(parent.parentNode)
+    // parent.classList.add("task-completed"); // To slide out the task to the right
+    // Now we delete that tast which we have slided out
+ 
+});
+}
+
+function completeTodo(btns){
+    btns.addEventListener("click", function (e) {
+        var parent = e.target;
+        console.log(parent);
+        parent.parentNode.classList.add("task-completed")
+    // parent.classList.add("task-completed"); // To slide out the task to the right
+    // Now we delete that tast which we have slided out
+
+});
+}
+     </script>
+</body>
+</html>
