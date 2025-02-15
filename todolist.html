@@ -3,202 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo-App</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Tic Tac Toe</title>
     <style>
-        *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
 
-body{
-    background-color: #212122;
-    height: 100vh;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-}
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            background: radial-gradient(circle, #ffcccb, #ff7e5f, #feb47b);
+            overflow: hidden;
+        }
 
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 500px;
-    margin-top: 100px;
-    background-color: #f2f2f2;
-    padding: 10px 20px;
-    border-radius: 10px;
-    gap: 20px;
-    box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.5);
-}
+        h1 {
+            font-family: 'Cursive';
+            color: #ffffff;
+            font-size: 4rem;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
 
-header{
-    background-color: powderblue;
-    width: 80%;
-    padding: 8px 10px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px  rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    
-}
-header input{
-    width: 80%;
-    padding: 8px 10px;
-    background: transparent;
-    outline: none;
-    border: none;
-}
+        #status {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+            margin-bottom: 20px;
+        }
 
-.btn{
-    padding: 8px 10px;
-    background-color: skyblue;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-}
-main{
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: rgb(194, 226, 255);
-    padding: 8px 10px;
-    width: 80%;
-    gap: 20px;
-}
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 150px);
+            grid-template-rows: repeat(3, 150px);
+            gap: 20px;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
 
-.inner-header{
-    padding: 10px 20px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-ul{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px   ;
-}
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-family: 'Cursive';
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+            color: #333;
+            background: linear-gradient(145deg, #f5f5f5, #e5e5e5);
+            transform: scale(1);
+        }
 
-li{
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
-    list-style-type: none;
-    padding: 8px 10px;
-    background-color: #f2f2f2;
-    width: 90%;
-    position: relative;
-    
-}
+        .box:hover {
+            transform: scale(1.1);
+            box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.3);
+            background-color: #ff6347; /* Tomato color on hover */
+            background: linear-gradient(145deg, #ff6347, #ff7e5f);
+        }
 
-i{
-    color: dodgerblue;
-}
-.fa-check{
-    
-   position: absolute;
-     right: 10px;
-    padding: 7px;
-    &:hover{
-        background-color: lightblue;
-        color: green;
-    }
-}
+        .box.X {
+            color: #ff6347; /* Tomato color */
+        }
 
-.fa-trash{
-    
-    position: absolute;
-      right: 35px;
-     padding: 7px;
-     &:hover{
-         background-color: rgb(232, 152, 152);
-         color: red;
-     }
- }
+        .box.O {
+            color: #4a90e2; /* Blue color */
+        }
 
- .task-completed{
-    text-decoration:line-through;
- }
+        /* Adding keyframes animation for fade-in effect */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .alert {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            padding: 30px;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            visibility: hidden;
+            color: #fff;
+            z-index: 999;
+            animation: bounceIn 0.8s ease;
+        }
+
+        .alert h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .alert h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .alert button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .alert button:hover {
+            background-color: #ff3b30;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .alert button:focus {
+            outline: none;
+        }
+
+        /* Bounce animation for the alert */
+        @keyframes bounceIn {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            60% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
     </style>
 </head>
 <body>
-     <div class="container">
-        <header>
-            <input type="text" name="task" id="task" placeholder="Enter Task">
-            <button class="btn" onclick="addTodo()" id="btn">Add</button>
-        </header>
-        <main>
-            <div class="inner-header">
-                <p>Task List</p>
-                <span><i class="fa-solid fa-filter"></i></span>
-            </div>
-            <ul id="ul" class="ul">
-            </ul>
-        </main>
-     </div>
-     <script>
-        let text = document.getElementById("task")
-let btn = document.getElementById("btn")
-let ul = document.getElementById("ul")
 
+    <h1>Tic Tac Toe</h1>
+    <p id="status">Player X's Turn</p>
 
-let del ,mark;
-function addTodo(){
-    let li = document.createElement('li');
-    li.setAttribute("class","")
-    let textNode = document.createTextNode(text.value);
-  mark= document.createElement("i");
-    mark.classList.add("fa-solid");
-    mark.classList.add("fa-check");
-    mark.addEventListener("click",completeTodo(mark))
+    <div class="container">
+        <div id="0" class="box" onclick="play(this)"></div>
+        <div id="1" class="box" onclick="play(this)"></div>
+        <div id="2" class="box" onclick="play(this)"></div>
+        <div id="3" class="box" onclick="play(this)"></div>
+        <div id="4" class="box" onclick="play(this)"></div>
+        <div id="5" class="box" onclick="play(this)"></div>
+        <div id="6" class="box" onclick="play(this)"></div>
+        <div id="7" class="box" onclick="play(this)"></div>
+        <div id="8" class="box" onclick="play(this)"></div>
+    </div>
 
-    del = document.createElement("i");
-    del.classList.add("fa-solid");
-    del.classList.add("fa-trash");
-    del.addEventListener("click",deleteTodo(del))
+    <div id="alert" class="alert">
+        <h1 id="title"></h1>
+        <h3 id="sub-title">You won the Game</h3>
+        <button onclick="restartGame()">Restart Game</button>
+    </div>
 
-    li.appendChild(textNode)
-    li.appendChild(mark)
-    li.appendChild(del)
-    ul.appendChild(li);
+    <script>
+        let turn = "X";
+        let arr = new Array(9).fill(null);
+        let isWin = false;
+        let div = document.getElementById("alert");
+        let status = document.getElementById("status");
+        let btns = document.querySelectorAll(".box");
 
-}
+        // Play Function 
+        function play(e) {
+            if (!isWin) {
+                if (arr[e.id] === null) {
+                    arr[e.id] = turn;
+                    e.innerText = turn;
+                    e.classList.add(turn); // Add the class for styling X and O
 
+                    if (turn === "X") {
+                        turn = "O";
+                        status.innerText = "Player O's Turn";
+                    } else {
+                        turn = "X";
+                        status.innerText = "Player X's Turn";
+                    }
 
-// btn.addEventListener("click",addTodo);
-function deleteTodo(btns){
-    
-    btns.addEventListener("click", function (e) {
-        var parent = e.target;
-        console.log(parent);
-        ul.removeChild(parent.parentNode)
-    // parent.classList.add("task-completed"); // To slide out the task to the right
-    // Now we delete that tast which we have slided out
- 
-});
-}
+                    checkWinner();
+                }
+            }
+        }
 
-function completeTodo(btns){
-    btns.addEventListener("click", function (e) {
-        var parent = e.target;
-        console.log(parent);
-        parent.parentNode.classList.add("task-completed")
-    // parent.classList.add("task-completed"); // To slide out the task to the right
-    // Now we delete that tast which we have slided out
+        // Check Winner Function
+        function checkWinner() {
+            const winPatterns = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8],  // Horizontal
+                [0, 3, 6], [1, 4, 7], [2, 5, 8],  // Vertical
+                [0, 4, 8], [2, 4, 6]               // Diagonal
+            ];
 
-});
-}
-     </script>
+            for (let pattern of winPatterns) {
+                const [a, b, c] = pattern;
+                if (arr[a] !== null && arr[a] === arr[b] && arr[b] === arr[c]) {
+                    isWin = true;
+                    div.style.visibility = "visible";
+                    document.getElementById("title").innerText = `Congratulation Player ${arr[a]}`;
+                    document.getElementById("sub-title").innerText = "You won the Game!";
+                    return;
+                }
+            }
+
+            if (!arr.includes(null)) {
+                div.style.visibility = "visible";
+                document.getElementById("title").innerText = "Game is Draw!";
+                document.getElementById("sub-title").innerText = "No one won the Game.";
+            }
+        }
+
+        // Restart Game Function
+        function restartGame() {
+            div.style.visibility = "hidden";
+            arr = new Array(9).fill(null);
+            isWin = false;
+            turn = "X";
+            status.innerText = "Player X's Turn";
+
+            btns.forEach((btn) => {
+                btn.innerText = "";
+                btn.classList.remove("X", "O");
+            });
+        }
+    </script>
+
 </body>
 </html>
