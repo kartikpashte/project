@@ -3,187 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>projects</title>
+    <title>Projects</title>
     <style>
-        *{
-            margin: 0;padding: 0;
-        }
-        body{
-            display: flex;
-            align-items: center;
-            justify-content: start;
-            flex-direction: column;
-            height: 100vh;
-            background-color: #07070d;
-            color: white;
+        /* Global Variables */
+        :root {
+            --primary-color: #00bfae; /* Teal */
+            --secondary-color: #07070d; /* Dark Background */
+            --text-color: #fff;
+            --card-bg-color: #f9f9f9;
+            --hover-color: #00c7b7; /* Lighter Teal */
+            --border-radius: 10px;
+            --transition-speed: 0.3s;
         }
 
-
-        header{
-            display: flex;
-            align-items: center;
-            justify-content: start;
-            height: 100%;
-            width: 90vw;
-            margin: 0 auto;
-            flex-direction: column;
-            gap: 40px;
-
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        nav{
-            margin: 0 auto;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        ul{
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            list-style-type: none;
-        }
-
-        ul li a{
-            color: white;
-            text-decoration: none;
-        }
-
-
-        .logo h1{
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            border-bottom: 2px solid teal;
-
-        }
-
-        .container{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: start;
-            justify-content: start ;
+            min-height: 100vh;
             flex-direction: column;
-            gap: 10px;
-        }
-
-        
-
-        .row{
-            display: flex;
-            align-items: center;
-            justify-content: start;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 50px;
-        }
-
-        .card{
-            background-color:   white;
             padding: 20px;
-            color: #000;
-            border-radius: 10px;
-            font-family: Arial, Helvetica, sans-serif;
-            display: flex;
-            align-items: start;
-            justify-content: start;
-            gap: 20px;
-            flex-direction: column;
-            width: 300px;
-            height: 330px;
+        }
 
+        h1, h4 {
+            font-weight: normal;
         }
-        img{
-            width: 50%;
-            height: 50%;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+        header {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
         }
-        h1{
-            font-size: 30px;
-            margin-bottom: 10px;
+
+        .logo h1 {
+            font-size: 2rem;
+            color: var(--text-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            letter-spacing: 1px;
         }
-        h4{
-            font-size: 20px;
-            margin-bottom: 20px;
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
         }
-        a{
-            background-color: teal;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
+
+        ul {
+            list-style-type: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        ul li a {
+            color: var(--text-color);
             text-decoration: none;
-            font-size: 18px;
+            font-size: 1.1rem;
+            transition: color var(--transition-speed);
+        }
+
+        ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px 20px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .card img {
+            width: 80%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform var(--transition-speed);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img:hover {
+            transform: scale(1.1);
+        }
+
+        .card h1 {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            color: var(--primary-color);
+        }
+
+        .card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #777;
+        }
+
+        .card a {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
             font-weight: bold;
+            text-decoration: none;
+            transition: background-color var(--transition-speed);
+        }
+
+        .card a:hover {
+            background-color: var(--hover-color);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .logo h1 {
+                font-size: 1.6rem;
+            }
+
+            .card h1 {
+                font-size: 1.3rem;
+            }
+
+            .card a {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+
     <header>
         <nav>
             <div class="logo">
                 <h1>Kartik Pashte</h1>
             </div>
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Projects</a></li>
-                    <li><a href="./portfolio.html">Portfolio</a></li>
-                    <li><a href="">About</a></li>
-                </ul>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Projects</a></li>
+                <li><a href="./portfolio.html">Portfolio</a></li>
+                <li><a href="">About</a></li>
+            </ul>
         </nav>
+
         <div class="container">
-            <h1 class="title">Projects</h1>
+            <h1 class="title">My Projects</h1>
             <div class="row">
-                <!-- tic tac toe -->
+                <!-- Tic Tac Toe -->
                 <div class="card">
-                    <img src="https://miro.medium.com/v2/resize:fit:512/1*9LBDOx6gG4mTuPGPDp888w.png" alt="">
+                    <img src="https://miro.medium.com/v2/resize:fit:512/1*9LBDOx6gG4mTuPGPDp888w.png" alt="Tic Tac Toe">
                     <h1>Tic Tac Toe</h1>
                     <h4>HTML | CSS | JS</h4>
                     <a href="./Tic_tac-toe.html">View Project</a>
                 </div>
-                <!-- form -->
+
+                <!-- Form -->
                 <div class="card">
-                    <img src="./images/image 1.jpeg" alt="">
+                    <img src="./images/image 1.jpeg" alt="Form">
                     <h1>Form</h1>
                     <h4>HTML | CSS | JS</h4>
                     <a href="./form.html">View Project</a>
                 </div>
+
                 <!-- Digital Clock -->
                 <div class="card">
-                    <img src="https://www.tutorjoes.in/js_program/output/04_stopwatch_1.jpg" alt="">
+                    <img src="https://www.tutorjoes.in/js_program/output/04_stopwatch_1.jpg" alt="Digital Clock">
                     <h1>Digital Clock</h1>
                     <h4>HTML | CSS | JS</h4>
                     <a href="./digitalClock.html">View Project</a>
                 </div>
+
                 <!-- Rock Paper Scissor -->
                 <div class="card">
-                    <img src="https://www.codewithfaraz.com/img/create%20rock%20paper%20scissors%20game%20with%20html,%20css,%20and%20javascript.jpg" alt="">
+                    <img src="https://www.codewithfaraz.com/img/create%20rock%20paper%20scissors%20game%20with%20html,%20css,%20and%20javascript.jpg" alt="Rock Paper Scissors">
                     <h1>Rock Paper Scissor</h1>
                     <h4>HTML | CSS | JS</h4>
                     <a href="./RockPaperScissor.html">View Project</a>
                 </div>
+
                 <!-- Todo List -->
                 <div class="card">
-                    <img src="https://raw.githubusercontent.com/codedex-io/projects/main/projects/create-a-to-do-list-app-with-html-css-js/finished-todo-list.png" alt="">
+                    <img src="https://raw.githubusercontent.com/codedex-io/projects/main/projects/create-a-to-do-list-app-with-html-css-js/finished-todo-list.png" alt="Todo List">
                     <h1>Todo List</h1>
                     <h4>HTML | CSS | JS</h4>
                     <a href="./todolist.html">View Project</a>
                 </div>
 
+                <!-- Portfolio -->
                 <div class="card">
-                    <img src="" alt="">
+                    <img src="./images/portfolio-image.jpg" alt="Portfolio">
                     <h1>Portfolio</h1>
                     <h4>HTML | CSS | JS</h4>
                     <a href="./portfolio.html">View Project</a>
                 </div>
-                
-            </div>  
+            </div>
         </div>
     </header>
+
 </body>
 </html>
-
