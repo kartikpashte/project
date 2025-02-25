@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium E-Commerce Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            text-align: center;
+        }
+
+        .search-box {
+            width: 30%;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            position: relative;
+            /* overflow: hidden; */
+        }
+
+        .search-box input[type="text"] {
+            flex: 1;
+            border: none;
+            font-size: 18px;
+            outline: none;
+            padding: 10px;
+        }
+
+        .search-box button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 15px;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: absolute;
+            margin-right: 10px;
+            right: 0;
+            /* height: 100%; */
+        }
+
+        .search-box button:hover {
+            background-color: #0056b3;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card .content {
+            padding: 20px;
+        }
+
+        .card h1 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .card button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 5px;
+        }
+
+        .card button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .buy-now {
+            background-color: #28a745 !important;
+        }
+
+        .buy-now:hover {
+            background-color: #218838 !important;
+        }
+
+        nav{
+            padding: 0 50px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            /* background-color: darkgoldenrod; */
+        }
+
+        nav .links{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* width: 50%; */
+            gap: 50px;
+
+        }
+
+        nav .links ul{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* width: 50%; */
+            gap: 20px;
+        }
+        nav .links ul li{
+            list-style: none;
+
+        }
+        nav .links ul li a{
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s;
+        &:hover{
+            color: #007bff;
+        }
+        }
+        .cart{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .cart:hover{
+            background-color: #0056b3;
+        }
+        .cart i{
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <h1>A</h1>
+        </div>
+        <form class="search-box" action="search_results.html" method="GET">
+            <input type="text" name="query" placeholder="Search for products...">
+            <button type="submit">🔍</button>
+        </form>
+
+      
+
+        <div class="links">
+
+        
+            <ul>
+
+                <li><a href="">Home</a></li>
+                <li><a href="">Projects</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+            <div class="cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+  
+        
+        <div class="grid-container">
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/41KuRShR97L._SX679_.jpg" alt="Wireless Mouse">
+                <div class="content">
+                    <h1>Portronics Wireless Optical Mouse</h1>
+                    <h2>₹299.00</h2>
+                    <button>Add To Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/616fdRSET7L._SX679_.jpg" alt="Gaming Keyboard">
+                <div class="content">
+                    <h1>RPM Euro Games Gaming Keyboard</h1>
+                    <h2>₹648.00</h2>
+                    <button>Add To Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/51JFVH1c1fL._SX522_.jpg" alt="Gaming PC">
+                <div class="content">
+                    <h1>KRYNORCXY Gaming Desktop PC</h1>
+                    <h2>₹15,741.00</h2>
+                    <button>Add To Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/61-K2lXmHQL._SX466_.jpg" alt="Webcam">
+                <div class="content">
+                    <h1>1080P Webcam with Microphone</h1>
+                    <h2>₹2,999.00</h2>
+                    <button>Add To Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/61yI89022tL._SX679_.jpg" alt="USB Microphone">
+                <div class="content">
+                    <h1>FDUCE M160 Gaming USB Microphone</h1>
+                    <h2>₹1,899.00</h2>
+                    <button>Add To Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/711GaKg9oQL._SX679_.jpg" alt="Graphics Card">
+                <div class="content">
+                    <h1>ASUS Rog Strix Nvidia Geforce RTX 4070 Ti Gaming Graphics Card</h1>
+                    <h2>₹98,799.00</h2>
+                    <button>Add To Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/51pSTV7RT5L._SX679_.jpg" alt="USB Microphone">
+                <div class="content">
+                    <h1>LAPCARE Bunker Gaming Over Ear Headset</h1>
+                    <h2>₹799.00</h2>
+                    <button>Add To Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/61yE2Ut4mBL._SX679_.jpg" alt="USB Microphone">
+                <div class="content">
+                    <h1>Kingston Fury Beast RGB 32GB 5600MT/s</h1>
+                    <h2>₹10,428.00</h2>
+                    <button>Add To Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
