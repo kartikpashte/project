@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium E-Commerce Store</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         * {
             margin: 0;
@@ -139,7 +141,7 @@
             background-color: #218838 !important;
         }
 
-        nav{
+        nav {
             padding: 0 50px;
             width: 100%;
             display: flex;
@@ -148,7 +150,7 @@
             /* background-color: darkgoldenrod; */
         }
 
-        nav .links{
+        nav .links {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -157,28 +159,32 @@
 
         }
 
-        nav .links ul{
+        nav .links ul {
             display: flex;
             align-items: center;
             justify-content: space-between;
             /* width: 50%; */
             gap: 20px;
         }
-        nav .links ul li{
+
+        nav .links ul li {
             list-style: none;
 
         }
-        nav .links ul li a{
+
+        nav .links ul li a {
             text-decoration: none;
             color: #333;
             font-size: 18px;
             font-weight: 500;
             transition: color 0.3s;
-        &:hover{
-            color: #007bff;
+
+            &:hover {
+                color: #007bff;
+            }
         }
-        }
-        .cart{
+
+        .cart {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -191,11 +197,78 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        .cart:hover{
+
+        .cart:hover {
             background-color: #0056b3;
         }
-        .cart i{
+
+        .cart i {
             font-size: 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .cart-items {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            font-size: 12px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-items span {
+            font-size: 10px;
+            margin-left: 2px;
+        }
+        .box {
+            display: flex;
+            align-items: start;
+            justify-content: start;
+            flex-direction: column;
+            text-align: center;
+            width: 28%;
+            border: 1px solid black;
+        }
+
+        .row-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .row-box img{
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .box h1{
+           font-size: 20px;
+        }
+        .box h2{
+            font-size: 18px;
+        }
+        .box ,h1 ,h2 ,img{
+            align-items: center;
         }
     </style>
 </head>
@@ -204,34 +277,31 @@
 
     <nav>
         <div class="logo">
-            <h1>A</h1>
+            <img src="https://cdn.dribbble.com/userupload/12833208/file/original-e2f8e6039413b916440b576dfcc4aa63.jpg?resize=1024x768&vertical=center alt="">
         </div>
-        <form class="search-box" action="search_results.html" method="GET">
+        <form class=" search-box" action="search_results.html" method="GET">
             <input type="text" name="query" placeholder="Search for products...">
             <button type="submit">🔍</button>
-        </form>
+            </form>
 
-      
+            <div class="links">
 
-        <div class="links">
+                <ul>
 
-        
-            <ul>
-
-                <li><a href="">Home</a></li>
-                <li><a href="">Projects</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Contact</a></li>
-            </ul>
-            <div class="cart">
-                <i class="fa-solid fa-cart-shopping"></i>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Projects</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+                <div class="cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
             </div>
-        </div>
     </nav>
 
     <div class="container">
-  
-        
+
+
         <div class="grid-container">
             <div class="card">
                 <img src="https://m.media-amazon.com/images/I/41KuRShR97L._SX679_.jpg" alt="Wireless Mouse">
@@ -314,7 +384,143 @@
             </div>
 
         </div>
+
+        <div class="box">
+            <h1 class="box-title-heading">Appliances for your home | Up to 55% off</h1>
+            <div class="row-box">
+                
+                <div class="small-box">
+                    <img src="https://m.media-amazon.com/images/I/41c0BLLCiWL._SX342_SY445_QL70_FMwebp_.jpg"
+                    alt="Appliances">
+                <h2>Washing Machine</h2>
+            </div>
+            
+            <div class="small-box">
+                <img src="https://hips.hearstapps.com/hmg-prod/images/best-microwaves-672d33b1461c9.jpg?crop=0.500xw:1.00xh;0.500xw,0&resize=640:*"
+                alt="Appliances">
+                <h2>Microwave</h2>
+            </div>
+        </div>
+        <div class="row-box">
+            <div class="small-box">
+                <img src="https://s.alicdn.com/@sc04/kf/Hb27161a499184a57ba8320577f4e105fE.jpg_720x720q50.jpg"
+                    alt="Appliances">
+                <h2>Air Conditioners</h2>
+            </div>
+
+            <div class="small-box">
+                <img src="https://cdn.jiostore.online/v2/jmd-asp/jdprod/wrkr/products/pictures/item/free/resize-w:460/Qu9tSpBlaR-whirlpool-192-litre-single-door-493715199-i-5-1200wx1200h.jpeg" alt="Appliances">
+                <h2>Refrigerator</h2>
+            </div>
+        </div>
+        <div>
+            <span>Load  More</span>
+        </div>
+        </div>
+
+        <div class="box">
+            <h1 class="box-title-heading">Appliances for your home | Up to 55% off</h1>
+            <div class="row-box">
+                
+                <div class="small-box">
+                    <img src="https://m.media-amazon.com/images/I/41c0BLLCiWL._SX342_SY445_QL70_FMwebp_.jpg"
+                    alt="Appliances">
+                <h2>Washing Machine</h2>
+            </div>
+            
+            <div class="small-box">
+                <img src="https://m.media-amazon.com/images/I/41xjkvkzv2L._SY445_SX342_QL70_FMwebp_.jpg"
+                alt="Appliances">
+                <h2>Microwave</h2>
+            </div>
+        </div>
+        <div class="row-box">
+            <div class="small-box">
+                <img src="https://m.media-amazon.com/images/I/31USb6P2YJL._SY445_SX342_QL70_FMwebp_.jpg"
+                    alt="Appliances">
+                <h2>Air Conditioners</h2>
+            </div>
+
+            <div class="small-box">
+                <img src="https://m.media-amazon.com/images/I/3103vW+RV7L._SY445_SX342_.jpg" alt="Appliances">
+                <h2>Refrigerator</h2>
+            </div>
+        </div>
+        <div>
+            <span>Load  More</span>
+        </div>
+        </div>
+
+        <div class="box">
+            <h1 class="box-title-heading">Appliances for your home | Up to 55% off</h1>
+            <div class="row-box">
+                
+                <div class="small-box">
+                    <img src="https://m.media-amazon.com/images/I/41c0BLLCiWL._SX342_SY445_QL70_FMwebp_.jpg"
+                    alt="Appliances">
+                <h2>Washing Machine</h2>
+            </div>
+            
+            <div class="small-box">
+                <img src="https://m.media-amazon.com/images/I/41xjkvkzv2L._SY445_SX342_QL70_FMwebp_.jpg"
+                alt="Appliances">
+                <h2>Microwave</h2>
+            </div>
+        </div>
+        <div class="row-box">
+            <div class="small-box">
+                <img src="https://m.media-amazon.com/images/I/31USb6P2YJL._SY445_SX342_QL70_FMwebp_.jpg"
+                    alt="Appliances">
+                <h2>Air Conditioners</h2>
+            </div>
+
+            <div class="small-box">
+                <img src="https://m.media-amazon.com/images/I/3103vW+RV7L._SY445_SX342_.jpg" alt="Appliances">
+                <h2>Refrigerator</h2>
+            </div>
+        </div>
+        <div>
+            <span>Load  More</span>
+        </div>
+        </div>
+
+        <div class="box">
+            <h1 class="box-title-heading">Appliances for your home | Up to 55% off</h1>
+            <div class="row-box">
+                
+                <div class="small-box">
+                    <img src="https://m.media-amazon.com/images/I/41c0BLLCiWL._SX342_SY445_QL70_FMwebp_.jpg"
+                    alt="Appliances">
+                <h2>Washing Machine</h2>
+            </div>
+            
+            <div class="small-box">
+                <img src="https://m.media-amazon.com/images/I/41xjkvkzv2L._SY445_SX342_QL70_FMwebp_.jpg"
+                alt="Appliances">
+                <h2>Microwave</h2>
+            </div>
+        </div>
+        <div class="row-box">
+            <div class="small-box">
+                <img src="https://m.media-amazon.com/images/I/31USb6P2YJL._SY445_SX342_QL70_FMwebp_.jpg"
+                    alt="Appliances">
+                <h2>Air Conditioners</h2>
+            </div>
+
+            <div class="small-box">
+                <img src="https://m.media-amazon.com/images/I/3103vW+RV7L._SY445_SX342_.jpg" alt="Appliances">
+                <h2>Refrigerator</h2>
+            </div>
+        </div>
+        <div>
+            <span>Load  More</span>
+        </div>
+        </div>
+
+
+
     </div>
+
 </body>
 
 </html>
