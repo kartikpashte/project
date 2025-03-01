@@ -245,6 +245,11 @@
             text-align: center;
             width: 28%;
             border: 1px solid black;
+            border-radius: 10px;
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .row-box {
@@ -259,6 +264,7 @@
             width: 100px;
             height: 100px;
             object-fit: contain;
+            margin-bottom: 10px;
         }
 
         .box h1{
@@ -266,10 +272,28 @@
         }
         .box h2{
             font-size: 18px;
+            margin-bottom: 10px;
         }
         .box ,h1 ,h2 ,img{
             align-items: center;
         }
+        .box button{
+            font-size: 14px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            &:hover {
+                background-color: #0056b3;
+                transform: scale(1.05);
+            }
+        
+        }
+        
     </style>
 </head>
 
@@ -319,7 +343,7 @@
                     <h1>RPM Euro Games Gaming Keyboard</h1>
                     <h2>₹648.00</h2>
                     <button>Add To Cart</button>
-                    <button class="buy-now">Buy Now</button>
+                    <button>Buy Now</button>
                 </div>
             </div>
 
@@ -385,6 +409,8 @@
 
         </div>
 
+        <div class="container">
+
         <div class="box">
             <h1 class="box-title-heading">Appliances for your home | Up to 55% off</h1>
             <div class="row-box">
@@ -414,7 +440,7 @@
             </div>
         </div>
         <div>
-            <span>Load  More</span>
+            <button class="see">See more</button>
         </div>
         </div>
 
@@ -423,31 +449,31 @@
             <div class="row-box">
                 
                 <div class="small-box">
-                    <img src="https://m.media-amazon.com/images/I/41c0BLLCiWL._SX342_SY445_QL70_FMwebp_.jpg"
+                    <img src="https://i.pinimg.com/736x/8e/35/5c/8e355c34aab2cf690d6c996ef8a0237b.jpg"
                     alt="Appliances">
                 <h2>Washing Machine</h2>
             </div>
             
             <div class="small-box">
-                <img src="https://m.media-amazon.com/images/I/41xjkvkzv2L._SY445_SX342_QL70_FMwebp_.jpg"
+                <img src="https://hips.hearstapps.com/hmg-prod/images/best-microwaves-672d33b1461c9.jpg?crop=0.500xw:1.00xh;0.500xw,0&resize=640:*"
                 alt="Appliances">
                 <h2>Microwave</h2>
             </div>
         </div>
         <div class="row-box">
             <div class="small-box">
-                <img src="https://m.media-amazon.com/images/I/31USb6P2YJL._SY445_SX342_QL70_FMwebp_.jpg"
+                <img src="https://s.alicdn.com/@sc04/kf/Hb27161a499184a57ba8320577f4e105fE.jpg_720x720q50.jpg"
                     alt="Appliances">
                 <h2>Air Conditioners</h2>
             </div>
 
             <div class="small-box">
-                <img src="https://m.media-amazon.com/images/I/3103vW+RV7L._SY445_SX342_.jpg" alt="Appliances">
+                <img src="https://cdn.jiostore.online/v2/jmd-asp/jdprod/wrkr/products/pictures/item/free/resize-w:460/Qu9tSpBlaR-whirlpool-192-litre-single-door-493715199-i-5-1200wx1200h.jpeg" alt="Appliances">
                 <h2>Refrigerator</h2>
             </div>
         </div>
         <div>
-            <span>Load  More</span>
+            <span><button>See more</button></span>
         </div>
         </div>
 
@@ -456,31 +482,31 @@
             <div class="row-box">
                 
                 <div class="small-box">
-                    <img src="https://m.media-amazon.com/images/I/41c0BLLCiWL._SX342_SY445_QL70_FMwebp_.jpg"
+                    <img src="https://i.pinimg.com/736x/8e/35/5c/8e355c34aab2cf690d6c996ef8a0237b.jpg"
                     alt="Appliances">
                 <h2>Washing Machine</h2>
             </div>
             
             <div class="small-box">
-                <img src="https://m.media-amazon.com/images/I/41xjkvkzv2L._SY445_SX342_QL70_FMwebp_.jpg"
+                <img src="https://hips.hearstapps.com/hmg-prod/images/best-microwaves-672d33b1461c9.jpg?crop=0.500xw:1.00xh;0.500xw,0&resize=640:*"
                 alt="Appliances">
                 <h2>Microwave</h2>
             </div>
         </div>
         <div class="row-box">
             <div class="small-box">
-                <img src="https://m.media-amazon.com/images/I/31USb6P2YJL._SY445_SX342_QL70_FMwebp_.jpg"
+                <img src="https://s.alicdn.com/@sc04/kf/Hb27161a499184a57ba8320577f4e105fE.jpg_720x720q50.jpg"
                     alt="Appliances">
                 <h2>Air Conditioners</h2>
             </div>
 
             <div class="small-box">
-                <img src="https://m.media-amazon.com/images/I/3103vW+RV7L._SY445_SX342_.jpg" alt="Appliances">
+                <img src="https://cdn.jiostore.online/v2/jmd-asp/jdprod/wrkr/products/pictures/item/free/resize-w:460/Qu9tSpBlaR-whirlpool-192-litre-single-door-493715199-i-5-1200wx1200h.jpeg" alt="Appliances">
                 <h2>Refrigerator</h2>
             </div>
         </div>
         <div>
-            <span>Load  More</span>
+            <span><button>See more</button></span>
         </div>
         </div>
 
@@ -489,38 +515,39 @@
             <div class="row-box">
                 
                 <div class="small-box">
-                    <img src="https://m.media-amazon.com/images/I/41c0BLLCiWL._SX342_SY445_QL70_FMwebp_.jpg"
+                    <img src="https://i.pinimg.com/736x/8e/35/5c/8e355c34aab2cf690d6c996ef8a0237b.jpg"
                     alt="Appliances">
                 <h2>Washing Machine</h2>
             </div>
             
             <div class="small-box">
-                <img src="https://m.media-amazon.com/images/I/41xjkvkzv2L._SY445_SX342_QL70_FMwebp_.jpg"
+                <img src="https://hips.hearstapps.com/hmg-prod/images/best-microwaves-672d33b1461c9.jpg?crop=0.500xw:1.00xh;0.500xw,0&resize=640:*"
                 alt="Appliances">
                 <h2>Microwave</h2>
             </div>
         </div>
         <div class="row-box">
             <div class="small-box">
-                <img src="https://m.media-amazon.com/images/I/31USb6P2YJL._SY445_SX342_QL70_FMwebp_.jpg"
+                <img src="https://s.alicdn.com/@sc04/kf/Hb27161a499184a57ba8320577f4e105fE.jpg_720x720q50.jpg"
                     alt="Appliances">
                 <h2>Air Conditioners</h2>
             </div>
 
             <div class="small-box">
-                <img src="https://m.media-amazon.com/images/I/3103vW+RV7L._SY445_SX342_.jpg" alt="Appliances">
+                <img src="https://cdn.jiostore.online/v2/jmd-asp/jdprod/wrkr/products/pictures/item/free/resize-w:460/Qu9tSpBlaR-whirlpool-192-litre-single-door-493715199-i-5-1200wx1200h.jpeg" alt="Appliances">
                 <h2>Refrigerator</h2>
             </div>
         </div>
         <div>
-            <span>Load  More</span>
+            <span><button>See more</button></span>
         </div>
         </div>
+
 
 
 
     </div>
+</div>
 
 </body>
-
 </html>
