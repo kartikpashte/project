@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Farm Vision</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(45deg, #6cc3b3, #2a8d85);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .page {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            width: 90%;
+            max-width: 1200px;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slidein 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slidein {
+            from {
+                transform: translateY(-100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .left,
+        .right {
+            width: 45%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .left img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, filter 0.3s ease;
+        }
+
+        .left img:hover {
+            transform: scale(1.05);
+            filter: brightness(0.8);
+            cursor: pointer;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .right p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .right p:hover {
+            color: #ff6b6b;
+        }
+
+        .right a {
+            font-size: 1.3rem;
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .right a:hover {
+            transform: translateY(-3px);
+            text-decoration: underline;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .page {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .left,
+            .right {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .right p {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .hidden {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>About Us</h1>
+
+    <div class="page">
+        <div class="left">
+            <img src="https://media.licdn.com/dms/image/v2/D4D0BAQHhKYqvicK8mQ/company-logo_200_200/company-logo_200_200/0/1715070792313/farm_vision_logo?e=2147483647&v=beta&t=40JVa23Mv0lU9wd4coJWn4By8Xsdn42T3byZ4PjBA1U"
+                alt="Farm Vision Logo">
+        </div>
+
+        <div class="right">
+            <p>At Farm Vision Company, we're thrilled to announce our latest breakthrough in agricultural technology. 🚀 Our team has been hard at work developing cutting-edge sensor technology designed to revolutionize farming practices.</p>
+            <p class="hidden">With our innovative sensors, farmers can now monitor their fields with unprecedented precision, allowing for more efficient resource allocation, improved crop yields, and ultimately, greater profitability.</p>
+            <p class="hidden">We're dedicated to empowering farmers with the tools they need to thrive in today's ever-changing agricultural landscape. Join us in shaping the future of farming with technology that's as smart as it is sustainable. 🌾💡</p>
+            <p><a href="#">#SmartFarming #FarmVision</a></p>
+        </div>
+    </div>
+
+</body>
+
+</html>
