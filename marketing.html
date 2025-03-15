@@ -328,9 +328,9 @@
 
     <nav>
         <div class="logo">
-            <img src="https://cdn.dribbble.com/userupload/12833208/file/original-e2f8e6039413b916440b576dfcc4aa63.jpg?resize=1024x768&vertical=center alt="">
+            <img src="https://cdn.dribbble.com/userupload/12833208/file/original-e2f8e6039413b916440b576dfcc4aa63.jpg?resize=1024x768&vertical=center alt=">
         </div>
-        <form class=" search-box" action="search_results.html" method="GET">
+        <form class=" search-box">
             <input type="text" name="query" placeholder="Search for products...">
             <button type="submit">🔍</button>
             </form>
@@ -640,6 +640,67 @@
     
     
 
+    <script>
+        // Cart functionality
+        let cartItemsCount = 0;
+        const cartIcon = document.querySelector(".cart");
+        const cartCount = document.createElement('div');
+        cartCount.classList.add("cart-items");
+        cartIcon.appendChild(cartCount);
+        
+        // Update cart count
+        function updateCartCount() {
+            cartCount.innerHTML = `<span>${cartItemsCount}</span>`;
+        }
+    
+        // Add item to cart
+        function addToCart(productName) {
+            cartItemsCount++;
+            updateCartCount();
+            alert(`${productName} added to cart!`);
+        }
+    
+        // Product buy now functionality
+        function buyNow(productName, price) {
+            alert(`Proceeding to buy: ${productName} for ₹${price}`);
+            // Logic for checkout can be added here (e.g., redirect to checkout page)
+        }
+    
+        // Event listeners for Add to Cart and Buy Now buttons
+        const addToCartButtons = document.querySelectorAll('.card button:first-of-type');
+        const buyNowButtons = document.querySelectorAll('.card button.buy-now');
+        
+        addToCartButtons.forEach((button, index) => {
+            const productName = button.closest('.card').querySelector('h1').textContent;
+            button.addEventListener('click', () => addToCart(productName));
+        });
+    
+        buyNowButtons.forEach((button, index) => {
+            const productName = button.closest('.card').querySelector('h1').textContent;
+            const productPrice = button.closest('.card').querySelector('h2').textContent.split('₹')[1].trim();
+            button.addEventListener('click', () => buyNow(productName, productPrice));
+        });
+    
+        // Search functionality (simple version)
+        const searchInput = document.querySelector('.search-box input[type="text"]');
+        searchInput.addEventListener('input', (event) => {
+            const searchQuery = event.target.value.toLowerCase();
+            const productCards = document.querySelectorAll('.card');
+            
+            productCards.forEach(card => {
+                const productTitle = card.querySelector('h1').textContent.toLowerCase();
+                if (productTitle.includes(searchQuery)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    
+        // Initialize cart count
+        updateCartCount();
+    </script>
+    
 </body>
 
 </html>
