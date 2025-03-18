@@ -17,7 +17,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
+            background-color: #f3c794c9;
             background-attachment: scroll;
             display: flex;
             align-items: center;
@@ -321,6 +321,26 @@
             object-fit: cover;
             /* border: 1px solid black; */
         }
+        .sale {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 300px;
+            background-color: #f8f9fa;
+            position: relative;
+            z-index: -1;
+        }
+
+        .sale img {
+            width: 100%;
+            height: 200%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
         
     </style>
 </head>
@@ -350,6 +370,10 @@
                 </div>
             </div>
     </nav>
+    
+    <div class="sale">
+        <img src="https://images-eu.ssl-images-amazon.com/images/G/31/INSLGW/pc_unrec_refresh._CB555261616_.jpg" alt="">
+    </div>
 
     <div class="container">
 
@@ -632,6 +656,8 @@
                     <span><button>See more</button></span>
                 </div>
             </div>
+
+            <a href="./comming.html"><button>comming soon</button></a>
 
 
 
