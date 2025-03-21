@@ -342,6 +342,7 @@
             left: 0;
             z-index: -1;
         }
+
         .navbar2 {
             padding: auto;
             width: 100%;
@@ -352,12 +353,14 @@
             justify-content: space-between;
             /* background-color: #746d66c9; */
         }
+
         .navbar2 ul {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
         }
+
         .navbar2 ul li {
             list-style: none;
 
@@ -376,7 +379,50 @@
             }
         }
 
+        .comming {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
+        .comming button {
+            padding: 1em 2em;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ff6f69;
+            transition: all 500ms;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+            outline: 2px solid #ff6f69;
+        }
+
+        .comming button:hover {
+            color: #ffffff;
+            transform: scale(1.05);
+            outline: 2px solid #ff6f69;
+            box-shadow: 2px 3px 10px -2px #ff6f69;
+        }
+
+        .comming button::before {
+            content: "";
+            position: absolute;
+            left: -50px;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background-color: #ff6f69;
+            transform: skewX(45deg);
+            z-index: -1;
+            transition: width 500ms;
+        }
+
+        .comming button:hover::before {
+            width: 200%;
+        }
     </style>
 </head>
 
@@ -715,7 +761,10 @@
                 </div>
             </div>
 
-            <a href="./comming.html"><button>comming soon</button></a>
+            <div class="comming">
+                <a href="./comming.html"><button>comming soon</button></a>
+            </div>
+
 
 
 
@@ -785,6 +834,8 @@
         // Initialize cart count
         updateCartCount();
     </script>
+
+
 
 </body>
 
