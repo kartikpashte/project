@@ -1,714 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium E-Commerce Store</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f3c794c9;
-            background-attachment: scroll;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1300px;
-            text-align: center;
-        }
-
-        .search-box {
-            width: 30%;
-            margin: 20px auto;
-            background-color: white;
-            border-radius: 30px;
-            border: 1px solid #ddd;
-            box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            padding: 12px 20px;
-            position: relative;
-            /* overflow: hidden; */
-        }
-
-        .search-box input[type="text"] {
-            flex: 1;
-            border: none;
-            font-size: 18px;
-            outline: none;
-            padding: 10px;
-        }
-
-        .search-box button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 15px 15px;
-            border-radius: 20px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            position: absolute;
-            margin-right: 10px;
-            right: 0;
-            /* height: 100%; */
-        }
-
-        .search-box button:hover {
-            background-color: #0056b3;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .card {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .card .content {
-            padding: 20px;
-        }
-
-        .card h1 {
-            font-size: 20px;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .card h2 {
-            font-size: 18px;
-            color: #007bff;
-            margin-bottom: 15px;
-        }
-
-        .card button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            margin-top: 5px;
-        }
-
-        .card button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-
-        .buy-now {
-            background-color: #28a745 !important;
-        }
-
-        .buy-now:hover {
-            background-color: #218838 !important;
-        }
-
-        nav {
-            padding: 10px 50px 30px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            /* background-color: #746d66c9; */
-        }
-
-        nav .links {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            /* width: 50%; */
-            gap: 50px;
-
-        }
-
-        nav .links ul {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            /* width: 50%; */
-            gap: 20px;
-        }
-
-        nav .links ul li {
-            list-style: none;
-
-        }
-
-        nav .links ul li a {
-            text-decoration: none;
-            color: #333;
-            font-size: 18px;
-            font-weight: 500;
-            transition: color 0.3s;
-
-            &:hover {
-                color: #007bff;
-            }
-        }
-
-        .cart {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background-color: #007bff;
-            color: white;
-            border-radius: 50%;
-            position: relative;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .cart:hover {
-            background-color: #0056b3;
-        }
-
-        .cart i {
-            font-size: 25px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-        }
-
-        .cart-items {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: #007bff;
-            color: white;
-            border-radius: 50%;
-            font-size: 12px;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cart-items span {
-            font-size: 10px;
-            margin-left: 2px;
-        }
-
-        .box {
-            display: flex;
-            align-items: start;
-            justify-content: start;
-            flex-direction: column;
-            text-align: center;
-            width: 28%;
-            border: 1px solid black;
-            border-radius: 10px;
-            margin: 20px;
-            padding: 20px;
-            /* background-color: lightsteelblue; */
-            box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-        }
-
-        .row-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .row-box img {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            margin-bottom: 10px;
-        }
-
-        .box h1 {
-            font-size: 20px;
-        }
-
-        .box h2 {
-            font-size: 15px;
-            font-weight: 100;
-            margin-bottom: 10px;
-        }
-
-        .box,
-        h1,
-        h2,
-        img {
-            align-items: center;
-        }
-
-        .box button {
-            font-size: 14px;
-            margin-top: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-
-            &:hover {
-                background-color: #0056b3;
-                transform: scale(1.05);
-            }
-
-        }
-
-        .box-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 40px;
-            margin-top: 30px;
-        }
-
-        .box img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            /* border: 1px solid black; */
-        }
-
-        .sale {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 300px;
-            background-color: #f8f9fa;
-            position: relative;
-            z-index: -1;
-        }
-
-        .sale img {
-            width: 100%;
-            height: 200%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-
-        .navbar2 {
-            padding: auto;
-            width: 100%;
-            margin-top: 0px;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            /* background-color: #746d66c9; */
-        }
-        .navbar2 ul {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-        .navbar2 ul li {
-            list-style: none;
-
-        }
-        .navbar2 ul li a {
-            text-decoration: none;
-            color: #333;
-            margin-left: 50px;
-            font-size: 18px;
-            font-weight: 500;
-            transition: color 0.3s;
-            &:hover {
-                color: #007bff;
-            }
-        }
-        .comming {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .comming button {
-            padding: 1em 2em;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #ff6f69;
-            transition: all 500ms;
-            font-size: 18px;
-            position: relative;
-            overflow: hidden;
-            outline: 2px solid #ff6f69;
-        }
-        .comming button:hover {
-            color: #ffffff;
-            transform: scale(1.05);
-            outline: 2px solid #ff6f69;
-            box-shadow: 2px 3px 10px -2px #ff6f69;
-        }
-        .comming button::before {
-            content: "";
-            position: absolute;
-            left: -50px;
-            top: 0;
-            width: 0;
-            height: 100%;
-            background-color: #ff6f69;
-            transform: skewX(45deg);
-            z-index: -1;
-            transition: width 500ms;
-        }
-        .comming button:hover::before {
-            width: 200%;
-        }
-    </style>
+    <title>E-Commerce Store</title>
 </head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.cart {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.quantity-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.remove-btn {
+    background-color: red;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+
+</style>
 <body>
-    <nav class="navbar1">
-        <div class="logo">
-            <img
-                src="https://cdn.dribbble.com/userupload/12833208/file/original-e2f8e6039413b916440b576dfcc4aa63.jpg?resize=1024x768&vertical=center alt=">
-        </div>
-        <form class=" search-box">
-            <input type="text" name="query" placeholder="Search for products...">
-            <button type="submit">🔍</button>
-        </form>
-        <div class="links">
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Projects</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
-            <div class="cart">
-                <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-        </div>
-    </nav>
-    <div class="navbar2">
-        <ul>
-            <li><a href="#">electronics</a></li>
-            <li><a href="#">Fashion</a></li>
-            <li><a href="#">Mobiles</a></li>
-            <li><a href="#">Computers</a></li>
-            <li><a href="#">Laptops</a></li>
-            <li><a href="#">Watches</a></li>
-        </ul>
-    </div>
-    <div class="sale">
-        <img src="https://images-eu.ssl-images-amazon.com/images/G/31/INSLGW/pc_unrec_refresh._CB555261616_.jpg" alt="">
-    </div>
-    <div class="container">
-        <div class="grid-container">
-            <div class="card">
-                <img src="https://m.media-amazon.com/images/I/41KuRShR97L._SX679_.jpg" alt="Wireless Mouse">
-                <div class="content">
-                    <h1>Portronics Wireless Optical Mouse</h1>
-                    <h2>₹299.00</h2>
-                    <button>Add To Cart</button>
-                    <button class="buy-now">Buy Now</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://m.media-amazon.com/images/I/616fdRSET7L._SX679_.jpg" alt="Gaming Keyboard">
-                <div class="content">
-                    <h1>RPM Euro Games Gaming Keyboard</h1>
-                    <h2>₹648.00</h2>
-                    <button>Add To Cart</button>
-                    <button class="buy-now">Buy Now</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://m.media-amazon.com/images/I/51JFVH1c1fL._SX522_.jpg" alt="Gaming PC">
-                <div class="content">
-                    <h1>KRYNORCXY Gaming Desktop PC</h1>
-                    <h2>₹15,741.00</h2>
-                    <button>Add To Cart</button>
-                    <button class="buy-now">Buy Now</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://m.media-amazon.com/images/I/61-K2lXmHQL._SX466_.jpg" alt="Webcam">
-                <div class="content">
-                    <h1>1080P Webcam with Microphone</h1>
-                    <h2>₹2,999.00</h2>
-                    <button>Add To Cart</button>
-                    <button class="buy-now">Buy Now</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://m.media-amazon.com/images/I/61yI89022tL._SX679_.jpg" alt="USB Microphone">
-                <div class="content">
-                    <h1>FDUCE M160 Gaming USB Microphone</h1>
-                    <h2>₹1,899.00</h2>
-                    <button>Add To Cart</button>
-                    <button class="buy-now">Buy Now</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://m.media-amazon.com/images/I/711GaKg9oQL._SX679_.jpg" alt="Graphics Card">
-                <div class="content">
-                    <h1>ASUS Rog Strix Nvidia Geforce RTX 4070 Ti Gaming Graphics Card</h1>
-                    <h2>₹98,799.00</h2>
-                    <button>Add To Cart</button>
-                    <button class="buy-now">Buy Now</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://m.media-amazon.com/images/I/51pSTV7RT5L._SX679_.jpg" alt="USB Microphone">
-                <div class="content">
-                    <h1>LAPCARE Bunker Gaming Over Ear Headset</h1>
-                    <h2>₹799.00</h2>
-                    <button>Add To Cart</button>
-                    <button class="buy-now">Buy Now</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://m.media-amazon.com/images/I/61yE2Ut4mBL._SX679_.jpg" alt="USB Microphone">
-                <div class="content">
-                    <h1>Kingston Fury Beast RGB 32GB 5600MT/s</h1>
-                    <h2>₹10,428.00</h2>
-                    <button>Add To Cart</button>
-                    <button class="buy-now">Buy Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="box-container">
-            <div class="box">
-                <h1 class="box-title-heading">Appliances for your home | Up to 55% off</h1>
-                <div class="row-box">
 
-                    <div class="small-box">
-                        <img src="https://i.pinimg.com/736x/8e/35/5c/8e355c34aab2cf690d6c996ef8a0237b.jpg"
-                            alt="Appliances">
-                        <h2>Washing Machine</h2>
-                    </div>
-                    <div class="small-box">
-                        <img src="https://hips.hearstapps.com/hmg-prod/images/best-microwaves-672d33b1461c9.jpg?crop=0.500xw:1.00xh;0.500xw,0&resize=640:*"
-                            alt="Appliances">
-                        <h2>Microwave</h2>
-                    </div>
-                </div>
-                <div class="row-box">
-                    <div class="small-box">
-                        <img src="https://s.alicdn.com/@sc04/kf/Hb27161a499184a57ba8320577f4e105fE.jpg_720x720q50.jpg"
-                            alt="Appliances">
-                        <h2>Air Conditioners</h2>
-                    </div>
-                    <div class="small-box">
-                        <img src="https://cdn.jiostore.online/v2/jmd-asp/jdprod/wrkr/products/pictures/item/free/resize-w:460/Qu9tSpBlaR-whirlpool-192-litre-single-door-493715199-i-5-1200wx1200h.jpeg"
-                            alt="Appliances">
-                        <h2>Refrigerator</h2>
-                    </div>
-                </div>
-                <div>
-                    <button class="see">See more</button>
-                </div>
-            </div>
-            <div class="box">
-                <h1 class="box-title-heading">Automotive essentials | Up to 60% off</h1>
-                <div class="row-box">
-                    <div class="small-box">
-                        <img src="https://m.media-amazon.com/images/I/71DJ-Mw29AL._AC_UF1000,1000_QL80_.jpg"
-                            alt="Appliances">
-                        <h2>Cleaning accessories</h2>
-                    </div>
-                    <div class="small-box">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuKZPgtwldXIS2-z3CZlP7VF_NCnI4ZEcKow&s"
-                            alt="Appliances">
-                        <h2>Tyre & rim care</h2>
-                    </div>
-                </div>
-                <div class="row-box">
-                    <div class="small-box">
-                        <img src="https://sarkkart.com/wp-content/uploads/2023/12/img_6466-jpeg.webp" alt="Appliances">
-                        <h2>Helmets</h2>
-                    </div>
-                    <div class="small-box">
-                        <img src="https://i.ebayimg.com/images/g/ZFUAAOSwZBBjc1E9/s-l400.jpg" alt="Appliances">
-                        <h2>Vacuum cleaner</h2>
-                    </div>
-                </div>
-                <div>
-                    <span><button>See more</button></span>
-                </div>
-            </div>
-            <div class="box">
-                <h1 class="box-title-heading">Starting ₹149 | Headphones</h1>
-                <div class="row-box">
-                    <div class="small-box">
-                        <img src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-2384,resizemode-75,msid-93587014/industry/cons-products/electronics/locally-manufactured-1-mln-units-of-various-products-in-q1fy23-boat.jpg"
-                            alt="Appliances">
-                        <h2>boat</h2>
-                    </div>
-                    <div class="small-box">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYyKd7NLznbIS4yWUYKy_KGg4zP4favB9rJQ&s"
-                            alt="Appliances">
-                        <h2>boult</h2>
-                    </div>
-                </div>
-                <div class="row-box">
-                    <div class="small-box">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY4AQP3CbwTEAilc1GxnVr_KmonvSSqkzZaoqdbb_fnYPnnucxb9qtbUUC_ONTVnuAegA&usqp=CAU"
-                            alt="Appliances">
-                        <h2>Noise</h2>
-                    </div>
-                    <div class="small-box">
-                        <img src="https://content.jdmagicbox.com/comp/chennai/v8/044pxx44.xx44.121025164431.t3v8/catalogue/zebronics-customer-care--chennai-customer-care-qzmgn.jpg"
-                            alt="Appliances">
-                        <h2>Zebronics</h2>
-                    </div>
-                </div>
-                <div>
-                    <span><button>See more</button></span>
-                </div>
-            </div>
-            <div class="box">
-                <h1 class="box-title-heading">Appliances for your home | Up to 55% off</h1>
-                <div class="row-box">
-                    <div class="small-box">
-                        <img src="https://i.pinimg.com/736x/8e/35/5c/8e355c34aab2cf690d6c996ef8a0237b.jpg"
-                            alt="Appliances">
-                        <h2>Washing Machine</h2>
-                    </div>
-                    <div class="small-box">
-                        <img src="https://hips.hearstapps.com/hmg-prod/images/best-microwaves-672d33b1461c9.jpg?crop=0.500xw:1.00xh;0.500xw,0&resize=640:*"
-                            alt="Appliances">
-                        <h2>Microwave</h2>
-                    </div>
-                </div>
-                <div class="row-box">
-                    <div class="small-box">
-                        <img src="https://s.alicdn.com/@sc04/kf/Hb27161a499184a57ba8320577f4e105fE.jpg_720x720q50.jpg"
-                            alt="Appliances">
-                        <h2>Air Conditioners</h2>
-                    </div>
-                    <div class="small-box">
-                        <img src="https://cdn.jiostore.online/v2/jmd-asp/jdprod/wrkr/products/pictures/item/free/resize-w:460/Qu9tSpBlaR-whirlpool-192-litre-single-door-493715199-i-5-1200wx1200h.jpeg"
-                            alt="Appliances">
-                        <h2>Refrigerator</h2>
-                    </div>
-                </div>
-                <div>
-                    <span><button>See more</button></span>
-                </div>
-            </div>
-            <div class="box">
-                <h1 class="box-title-heading">Min. 40% off | Fun toys that spark joy</h1>
-                <div class="row-box">
-                    <div class="small-box">
-                        <img src="https://www.giftify.in/cdn/shop/files/PenguinSoftToy.jpg?v=1691838874"
-                            alt="Appliances">
-                        <h2>soft toys</h2>
-                    </div>
-                    <div class="small-box">
-                        <img src="https://staranddaisy.in/wp-content/uploads/2024/03/ride-on-jeep-for-kids-1699-red-5.webp"
-                            alt="Appliances">
-                        <h2>Ride ons</h2>
-                    </div>
-                </div>
-                <div class="row-box">
-                    <div class="small-box">
-                        <img src="https://cdn.create.vista.com/api/media/small/609197280/stock-photo-selective-focus-dice-human-hand-holding-moves-ludo-indoor-game"
-                            alt="Appliances">
-                        <h2>Indoor games</h2>
-                    </div>
-                    <div class="small-box">
-                        <img src="https://m.media-amazon.com/images/I/81KIqv34plL._AC_UL1500_.jpg" alt="Appliances">
-                        <h2>outdoor games</h2>
-                    </div>
-                </div>
-                <div>
-                    <span><button>See more</button></span>
-                </div>
-            </div>
-            <div class="box">
-                <h1 class="box-title-heading">Under ₹499 | Deals on home improvement</h1>
-                <div class="row-box">
-                    <div class="small-box">
-                        <img src="https://images.herzindagi.info/image/2024/Apr/What-is-the-best-way-to-clean-appliances.jpg"
-                            alt="Appliances">
-                        <h2>Cleaning supplies</h2>
-                    </div>
-                    <div class="small-box">
-                        <img src="https://ruheindia.com/cdn/shop/files/UltraSleek304-GradeOverheadShower_6x6inches_2765580d-892a-478e-a979-c83accf7a19d.jpg?v=1738913050&width=460"
-                            alt="Appliances">
-                        <h2>Bathroom accessories</h2>
-                    </div>
-                </div>
-                <div class="row-box">
-                    <div class="small-box">
-                        <img src="https://i0.wp.com/gnhlumber.com/wp-content/uploads/2022/11/Must-have-Tools.webp?fit=850%2C650&ssl=1"
-                            alt="Appliances">
-                        <h2>Home tools</h2>
-                    </div>
-                    <div class="small-box">
-                        <img src="https://m.media-amazon.com/images/I/91gA190mNYL._SX569_.jpg" alt="Appliances">
-                        <h2>Wallpapers</h2>
-                    </div>
-                </div>
-                <div>
-                    <span><button>See more</button></span>
-                </div>
-            </div>
-            <div class="comming">
-                <a href="./comming.html"><button>comming soon</button></a>
-            </div>
+    <h2>E-Commerce Store</h2>
+    
+    <!-- Product List -->
+    <div id="products">
+        <div class="product" data-id="1" data-name="Product 1" data-price="10">
+            <h3>Product 1</h3>
+            <p>Price: $10</p>
+            <button onclick="addToCart(1, 'Product 1', 10)">Add to Cart</button>
+        </div>
+        <div class="product" data-id="2" data-name="Product 2" data-price="15">
+            <h3>Product 2</h3>
+            <p>Price: $15</p>
+            <button onclick="addToCart(2, 'Product 2', 15)">Add to Cart</button>
+        </div>
+        <div class="product" data-id="3" data-name="Product 3" data-price="20">
+            <h3>Product 3</h3>
+            <p>Price: $20</p>
+            <button onclick="addToCart(3, 'Product 3', 20)">Add to Cart</button>
         </div>
     </div>
+
+    <!-- Cart Section -->
+    <h2>Shopping Cart</h2>
+    <button onclick="viewCart()">View Cart</button>
+    <div id="cart" class="cart"></div>
+
+    <script>
+        // Function to add product to cart
+function addToCart(id, name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    let existingProduct = cart.find(item => item.id === id);
+    
+    if (existingProduct) {
+        existingProduct.quantity += 1;
+    } else {
+        cart.push({ id, name, price, quantity: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${name} added to cart!`);
+}
+
+// Function to display cart items
+function viewCart() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cartDiv = document.getElementById("cart");
+    cartDiv.innerHTML = ""; // Clear previous data
+    
+    if (cart.length === 0) {
+        cartDiv.innerHTML = "<p>Cart is empty.</p>";
+        return;
+    }
+
+    let total = 0;
+    cart.forEach((item, index) => {
+        let itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        cartDiv.innerHTML += `
+            <div class="cart-item">
+                <span>${item.name} - $${item.price} x ${item.quantity} = $${itemTotal}</span>
+                <div class="quantity-controls">
+                    <button onclick="updateQuantity(${index}, 1)">+</button>
+                    <button onclick="updateQuantity(${index}, -1)">-</button>
+                </div>
+                <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+            </div>
+        `;
+    });
+
+    cartDiv.innerHTML += `<hr><p><strong>Total: $${total}</strong></p>`;
+}
+
+// Function to update quantity
+function updateQuantity(index, change) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart[index]) {
+        cart[index].quantity += change;
+        if (cart[index].quantity <= 0) {
+            cart.splice(index, 1);
+        }
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    viewCart();
+}
+
+// Function to remove item from cart
+function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.splice(index, 1);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    viewCart();
+}
+
+// Load cart on page load
+document.addEventListener("DOMContentLoaded", viewCart);
+
+    </script>
+
 </body>
-
 </html>
