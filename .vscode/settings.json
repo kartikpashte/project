@@ -47,5 +47,6 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "cinttypes": "cpp"
-    }
+    },
+    "liveServer.settings.port": 5501
 }
